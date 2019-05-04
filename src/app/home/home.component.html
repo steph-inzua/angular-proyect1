@@ -1,0 +1,30 @@
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombres</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Fecha Nacimiento</th>
+      <th scope="col">Edad</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items" >
+      <th scope="row">1</th>
+      <td>{{item.payload.doc.data().nombre}}</td>
+      <td>{{item.payload.doc.data().apellido}}</td>
+      <td>{{item.payload.doc.data().fechaNacimiento.toDate()| date: 'dd/MM/yyyy'}}</td>
+      <td>{{item.payload.doc.data().edad}}</td>
+    </tr>
+    <tr >
+        <th scope="row">Promedio Edad</th>
+        <td >{{promedioEdad}}</td>
+        <th scope="row">Desviación Estandar</th>
+        <td >{{parmtdesviacion}}</td>
+        <td ></td>
+
+    </tr>
+  </tbody>
+</table>

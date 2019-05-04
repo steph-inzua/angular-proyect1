@@ -1,0 +1,50 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Nuevo Cliente</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+    
+
+      <div class="col col-md-8">
+
+        <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Nombre" class="form-control" formControlName="nombre">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validation_messages.nombre">
+              <mat-error *ngIf="exampleForm.get('nombre').hasError(validation.type) && (exampleForm.get('nombre').dirty || exampleForm.get('nombre').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Apellidos" class="form-control" formControlName="apellido">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validation_messages.apellido">
+              <mat-error *ngIf="exampleForm.get('apellido').hasError(validation.type) && (exampleForm.get('apellido').dirty || exampleForm.get('apellido').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" formControlName = "fechaNacimiento">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        
+          
+          <div class="row submit-button-container">
+            <div class="col-md-4">
+              <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!exampleForm.valid">Create</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
